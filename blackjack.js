@@ -1,6 +1,5 @@
 // 
-// By:    Mark Zamoyta, github.com/MarkZamoyta 
-//        I'm only using it as a practice file.
+// By:    Mudathir Lawal
 // Date:  23/01/2019
 //
  
@@ -19,10 +18,10 @@ let values = [
 ];
 
 // DOM VARIABLES:
-let textArea = document.getElementById( 'text-area' ),
-    newGameButton = document.getElementById( 'new-game-btn' ),
-    hitButton = document.getElementById( 'hit-btn' ),
-    stayButton = document.getElementById( 'stay-btn' );
+let textArea      = document.getElementById( 'text-area' ),
+    hitButton     = document.getElementById( 'hit-btn' ),
+    stayButton    = document.getElementById( 'stay-btn' ),
+    newGameButton = document.getElementById( 'new-game-btn' );
 
 // GAME VARIABLES:
 let dealerScore = 0,
@@ -45,13 +44,19 @@ newGameButton.addEventListener( 'click', function() {
 	gameStarted = true;
 
 	deck        = createDeck();
-	shuffleDeck();
+	shuffleDeck( deck );
 	playerCards = [ getNextCard(), getNextCard() ];
 	dealerCards = [ getNextCard(), getNextCard() ];
 
+    console.log( getCardString( playerCards[ 0 ] ) );
+    console.log( getCardString( playerCards[ 1 ] ) );
+    console.log( getCardString( dealerCards[ 0 ] ) );
+    console.log( getCardString( dealerCards[ 1 ] ) );
+    console.log( dealerCards[ 0 ] );
+
 	newGameButton.style.display = 'none';
 	hitButton.style.display     = 'inline';
-	stayButton.style.dsiplay    = 'inline';
+	stayButton.style.display    = 'inline';
 
 	showStatus();
 } );
@@ -87,8 +92,8 @@ function createDeck() {
 function shuffleDeck( deck ) {
 	for ( let i = 0; i < deck.length; i++ ) {
 		let swapIdx = Math.trunc( Math.random() * deck.length );
-		let tmp = deck[ sawpIdx ];
-		deck[ sawpIdx ] = deck[ i ];
+		let tmp = deck[ swapIdx ];
+		deck[ swapIdx ] = deck[ i ];
 		deck[ i ] = tmp;
 	}
 }
@@ -99,6 +104,7 @@ function getNextCard() {
 
 function getCardString( card ) {
 	return card.value + ' of ' + card.suit;
+	console.log( card );
 }
 
 function getCardNumericValue( card ) {
@@ -131,7 +137,7 @@ function getScore( cardArray ) {
 	let score = 0;
 	let hasAce = false;
 
-	for ( let i = 0; cardArray.length; i++ ) {
+	for ( let i = 0; i < cardArray.length; i++ ) {
 		let card = cardArray[ i ];
 		score += getCardNumericValue( card );
 	}
@@ -140,7 +146,7 @@ function getScore( cardArray ) {
 		hasAce = true;
 	}
 
-	if ( ( hasAce && score + 10 ) <= 21 ) {
+	if (  hasAce && ( ( score + 10 ) <= 21 ) ) {
 		return score + 10;
 	}
 
@@ -193,9 +199,14 @@ function showStatus() {
 		return;  
 	}
 
+	/*for ( var i = 0; i < deck.length; i++ ) {
+		textArea.innerText += '\n' + getCardString( deck[ i ] );
+	}*/
+
 	let dealerCardString = '';
 	for ( let i = 0; i < dealerCards.length; i++ ) {
-		dealerCardString += getCardString( dealerCards[ i ] + '\n' );
+		//console.log( dealerCards[ i ] );
+		dealerCardString += getCardString( dealerCards[ i ] ) + '\n';
 	}
 
 	let playerCardString = '';
