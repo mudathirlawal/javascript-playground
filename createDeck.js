@@ -34,7 +34,8 @@ const getCardString = card => {
 	return card.value + ' of ' + card.suit;
 };
 
-const shuffleDeck = () => {};
+const shuffleDeck = _ => {};
+const getNextCard = _ => deck.shift();
 
 const printDeck = _ => {
 	for ( let j = 0; j < deck.length; j++ ) {
@@ -42,16 +43,14 @@ const printDeck = _ => {
 	}
 }
 
-const getNextCard = _ => deck.shift();
-
-let playerCards = [ getCardString( deck[0] ), getCardString( deck[2] ) ];
+console.log( deck );
+let playerCards = [ getNextCard(), getNextCard() ];
 
 console.log( '\n' );
 console.log( "Welcome to Blackjack!" );
 console.log( "You are dealt:" );
-console.log( "\t\t" + playerCards[ 0 ] );
-console.log( "\t\t" + playerCards[ 1 ] );
+console.log( "\t\t" + getCardString( playerCards[ 0 ] ) );
+console.log( "\t\t" + getCardString( playerCards[ 1 ] ) );
 console.log( '\n' ); 
  
 printDeck();
-console.log( deck );
