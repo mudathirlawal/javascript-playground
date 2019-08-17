@@ -16,9 +16,13 @@ const suits = [ 'Hearts', 'Clubs', 'Diamonds', 'Spades' ];
 
 const createDeck = _ => {
 	let deck = [];
-	for ( let j = 0; j < values.length; j++ ) {
-		for ( let i = 0; i < suits.length; i++ ) {
-	        deck.push( values[ j ] + ' of ' + suits[ i ] );
+	for ( let valueIdx = 0; valueIdx < values.length; valueIdx++ ) {
+		for ( let suitIdx = 0; suitIdx < suits.length; suitIdx++ ) {
+	        let card = {
+	        	value: values[ valueIdx ],
+	        	suit: suits[ suitIdx ]
+	        };
+	        deck.push( card );
 	    }
     }
     return deck;
@@ -26,17 +30,21 @@ const createDeck = _ => {
 
 let deck = createDeck();
 
+const getCardString = card => {
+	return card.value + ' of ' + card.suit;
+};
+
 const shuffleDeck = () => {};
 
 const printDeck = _ => {
-	for ( let k = 0; k < deck.length; k++ ) {
-		console.log( deck[ k ] );
+	for ( let j = 0; j < deck.length; j++ ) {
+		console.log( deck[ j ] );
 	}
 }
 
 const getNextCard = _ => deck.shift();
 
-let playerCards = [ getNextCard(), getNextCard() ];
+let playerCards = [ getCardString( deck[0] ), getCardString( deck[2] ) ];
 
 console.log( '\n' );
 console.log( "Welcome to Blackjack!" );
