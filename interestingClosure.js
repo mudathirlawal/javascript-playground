@@ -1,3 +1,5 @@
+// What does the console log?
+
 function myStr1(start, step) {
     return function() {
         const curr = start;
