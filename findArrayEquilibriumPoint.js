@@ -1,5 +1,5 @@
 /**
- * File:        findArrayEquilibrumPoint.js
+ * File:        findArrayEquilibriumPoint.js
  * Author:      Mudathir Lawal
  * Email:       mudathir.lawal@yahoo.com
  * GitHub:      github.com/mudathirlawal
@@ -7,12 +7,12 @@
  * Version:     1.0.0 EN
  *
  * Purpose:     Given an array A of n positive numbers. The task is to find the 
- *              first equilibium point in the array. 
+ *              first equilibrium point in the array. 
  *              HINT: According to my solution, if you want to find the last 
- *              equilibrum point in the array, simply iterate from the last 
+ *              equilibrium point in the array, simply iterate from the last 
  *              element of the given array. If you are interested in the 
- *              middlemost equilibrum point, you can create two arrays and update
- *              one with all discorvered equilibrum elements, and the other with 
+ *              middlemost equilibrium point, you can create two arrays and update
+ *              one with all discorvered equilibrium elements, and the other with 
  *              their corresponding indecies, then work arround that.
  *              
  *              The Equilibrium Point in an array is a position such that the sum
@@ -28,21 +28,21 @@ function findRightSum( arr, k ){
     return total;
 }
 
-function findArrayEquilibrumPoint( eqArray ) {
+function findArrayEquilibriumPoint( eqArray ) {
     let firstIdx = 0;
     let len = eqArray.length;
     let leftSum = eqArray[firstIdx];
     if ( len < 3 ) {
         if ( len == 2 ) {
             console.log( 
-                '\n\tPlease, enter an array that\n \thas an equillibrum index.\n'
+                '\n\tPlease, enter an array that\n \thas an equilibrium index.\n'
             );
             return null;
         }
         else {
             console.log( 
-                "Equilibrum Index: " + firstIdx + ";", 
-                "Value at equilibrum index: " + eqArray[firstIdx] 
+                "Equilibrium Index: " + firstIdx + ";", 
+                "Value at equilibrium index: " + eqArray[firstIdx] 
             );
             return 1;
         }
@@ -53,8 +53,8 @@ function findArrayEquilibrumPoint( eqArray ) {
         let rightSum = findRightSum( eqArray, i );
         if ( leftSum === rightSum ){
             console.log( 
-                "Equilibrum Index: " + j + ";",
-                "Value at equilibrum index: " + eqArray[j]
+                "Equilibrium Index: " + j + ";",
+                "Value at equilibrium index: " + eqArray[j]
             );
             return j;
         }
@@ -63,7 +63,7 @@ function findArrayEquilibrumPoint( eqArray ) {
         }
     }
     console.log( 
-        '\n\tPlease, enter an array that\n \thas an equillibrum index.\n'
+        '\n\tPlease, enter an array that\n \thas an equilibrium index.\n'
     );
     return null;    
 }
@@ -71,14 +71,14 @@ function findArrayEquilibrumPoint( eqArray ) {
 const testArray1 = [ 50 ];
 const testArray2 = [ 1, 1 ];
 const testArray3 = [ 1, 1, 1, 3, 2, 1];
-const testArray4 = [0, 0, 0, 2, -4, 1, 1]; // Has multiple equilibrum points.
+const testArray4 = [0, 0, 0, 2, -4, 1, 1]; // Has multiple equilibrium points, 3.
 const testArray5 = [-7, 1, 5, 2, -4, 3, 0];
 const testArray6 = [-7, 1, 5, 2, -4, 3, 0, 9];
 
 // Test Cases:
-console.log( findArrayEquilibrumPoint( testArray1 ) );
-console.log( findArrayEquilibrumPoint( testArray2 ) );
-console.log( findArrayEquilibrumPoint( testArray3 ) );
-console.log( findArrayEquilibrumPoint( testArray4 ) );
-console.log( findArrayEquilibrumPoint( testArray5 ) );
-console.log( findArrayEquilibrumPoint( testArray6 ) );
+console.log( findArrayEquilibriumPoint( testArray1 ) );
+console.log( findArrayEquilibriumPoint( testArray2 ) );
+console.log( findArrayEquilibriumPoint( testArray3 ) );
+console.log( findArrayEquilibriumPoint( testArray4 ) );
+console.log( findArrayEquilibriumPoint( testArray5 ) );
+console.log( findArrayEquilibriumPoint( testArray6 ) );
