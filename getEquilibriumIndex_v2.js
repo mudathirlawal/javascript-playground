@@ -23,7 +23,7 @@ function getEquilibriumIndex( ascenderArray, descenderArray ) {
     const len = ascenderArray.length;
     for ( i = 0; i < len; i++ ) {
         if ( ascenderArray[i] === descenderArray[i] ) {
-            return i;
+            return i + 1;
         }
     }
 }
@@ -34,13 +34,12 @@ const testArray2 = [0, 0, 0, 2, -4, 1, 1]; // Has multiple equilibrum points.
 const ascender = generateAscenderArray( testArray2 );
 const descender = generateDescenderArray( testArray2 );
 
-console.log( generateAscenderArray( testArray1 ) );
-console.log( generateDescenderArray( testArray1 ) );
+console.log( generateAscenderArray( testArray2 ) );
+console.log( generateDescenderArray( testArray2 ) );
 console.log( getEquilibriumIndex( ascender, descender ) );
 
 
 // [ 0, 0, 0, 2, -4, 1, 1 ]
 // [ 0, 0, 0, 2, -2,-1, 0 ]
 // [ 0, 0, 0, 0, -2, 2, 1 ]
-
 // 0
