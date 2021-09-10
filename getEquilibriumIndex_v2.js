@@ -19,15 +19,21 @@ function generateDescenderArray( arr ) {
     return descenderArray;   
 }
 
-function getEquilibriumIndex( ascenderArray, descenderArray ) {
-    const len = ascenderArray.length;
+function getIdxOfEqualValues( ascender, descender ) {
+    const len = ascender.length;
     for ( i = 0; i < len; i++ ) {
-        if ( ascenderArray[i] === descenderArray[i] ) {
-            return i + 1;
+        if ( ascender[i] === descender[i] ) {
+            return i;
         }
     }
 }
 
+function getEquilibriumIndex( arr ) {
+    const ascender = generateAscenderArray( arr );
+    const descender = generateDescenderArray( arr );
+    const idxOfEqualValues = getIdxOfEqualValues( ascender, descender );
+    return idxOfEqualValues;
+}
 
 const testArray1 = [ 1, 1, 1, 3, 2, 1 ];
 const testArray2 = [0, 0, 0, 2, -4, 1, 1]; // Has multiple equilibrum points.
