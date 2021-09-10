@@ -18,15 +18,20 @@ function generateDescenderArray( arr ) {
     return descenderArray;   
 }
 
-function getEquilibriumIndex( arr ) {
-    const ascenderArray = generateAscenderArray( arr );
-    const descenderArray = generateDescenderArray( arr );
-    const len = ascenderArray.length;
+function getIndexOfEqualValues( ascender, descender ) {
+    const len = ascender.length;
     for ( i = len - 1; i >= 0; i-- ) {
-        if ( ascenderArray[i] === descenderArray[i] ) {
+        if ( ascender[i] === descender[i] ) {
             return i;
         }
     }
+}
+
+function getEquilibriumIndex( arr ) {
+    const ascender = generateAscenderArray( arr );
+    const descender = generateDescenderArray( arr );
+    const indexOfEqualValues = getIndexOfEqualValues( ascender, descender );
+    return indexOfEqualValues;
 }
 
 const testArray1 = [ 1, 1, 1, 3, 2, 1 ];
